@@ -60,9 +60,9 @@ void left(int turn)
     create_stop();
 }
 
-void pick_up_botguy(int arm)
+void pick_up_botguy (int arm)
 {
-	forward(380);
+    forward(380);
     right(turn);
     forward(850);
     left(turn);
@@ -75,6 +75,16 @@ void pick_up_botguy(int arm)
     msleep(10);
     disable_servos();
  }
-    
-    
+
+void go_to_airlock (int cla)
+{
+    right(turn);
+    forward(850);
+    right(turn);
+    forward(100);
+    set_servo_position (claw,open);
+    enable_servos();
+    msleep(10);
+    disable_servos();
+}
     
