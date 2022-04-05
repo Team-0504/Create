@@ -10,6 +10,7 @@ int arm=0;
 int claw=1;
 int lightsensor=3;
 int botguy=200;
+int time=1;
 
 int main()
 {
@@ -21,7 +22,8 @@ int main()
     set_servo_position(claw,open);
     msleep(10);
     disable_servos();
-  	pick_up_botguy(arm);
+  	hit_botguy(arm);
+    go_to_airlock(1);
     create_disconnect();   
     return 0;
     
@@ -60,7 +62,7 @@ void left(int turn)
     create_stop();
 }
 
-void pick_up_botguy (int arm)
+void hit_botguy (int arm)
 {
     forward(380);
     right(turn);
@@ -69,14 +71,12 @@ void pick_up_botguy (int arm)
     enable_servos();
     set_servo_position(arm,botguy);
     msleep(50);
-    set_servo_position(claw,closed);
-    msleep(100);
-    set_servo_position(arm,up);
-    msleep(10);
     disable_servos();
+    left(turn);
+    right(turn);
  }
 
-void go_to_airlock (int cla)
+void go_to_airlock (int time)
 {
     right(turn);
     forward(850);
@@ -86,5 +86,6 @@ void go_to_airlock (int cla)
     enable_servos();
     msleep(10);
     disable_servos();
+    time = time+1;
 }
     
