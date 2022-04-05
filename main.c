@@ -22,7 +22,7 @@ int main()
     set_servo_position(claw,open);
     msleep(10);
     disable_servos();
-  	hit_botguy(arm);
+    hit_botguy(arm);
     pick_up_cube(1);
     go_to_airlock(1);
     create_disconnect();   
