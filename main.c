@@ -23,8 +23,21 @@ int main()
     msleep(10);
     disable_servos();
     hit_botguy(arm);
+    right(turn);
+    forward(100);
+    left(turn);
     pick_up_cube(1);
+    right(turn);
     go_to_airlock(1);
+    right(turn*2);
+    forward(100);
+    left(turn);
+    forward(1000);
+    right(turn);
+    pick_up_cube(2);
+    right(turn);
+    forward(1000);
+    go_to_airlock(2);
     create_disconnect();   
     return 0;
     
@@ -79,7 +92,6 @@ void hit_botguy (int arm)
 
 void go_to_airlock (int time)
 {
-    right(turn);
     forward(100);
     set_servo_position (claw,open);
     enable_servos();
@@ -90,12 +102,9 @@ void go_to_airlock (int time)
 
 void pick_up_cube (int time)
 {
-   right(turn);
-   forward(100);
    set_servo_position(arm,down);
    set_servo_position(claw,open);
    enable_servos();
-   left(turn);
    set_servo_position(claw,open);
    msleep(20);
    set_servo_position(claw,closed);
