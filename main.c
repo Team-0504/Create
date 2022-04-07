@@ -1,13 +1,13 @@
 #include <kipr/wombat.h>
-int rightspeed=200;
-int leftspeed=200;
+int rightspeed=400;
+int leftspeed=400;
 int turn=93;
 int up=100;
 int down=1000;
 int open=100;
 int closed=1000;
-int arm=0;
-int claw=1;
+int arm=1;
+int claw=3;
 int lightsensor=3;
 int botguy=200;
 int time=1;
