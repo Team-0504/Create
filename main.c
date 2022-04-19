@@ -1,16 +1,15 @@
 #include <kipr/wombat.h>
-int rightspeed=400;
-int leftspeed=400;
+int rightspeed=200;
+int leftspeed=200;
 int turn=93;
-int up=100;
-int down=1000;
-int open=100;
-int closed=1000;
-int arm=1;
-int claw=3;
+int up=1000;
+int down=460;
+int open=1400;
+int closed=700;
+int arm=0;
+int claw=1;
 int lightsensor=3;
 int botguy=200;
-int time=1;
 
 int main()
 {
@@ -18,26 +17,21 @@ int main()
     //shut_down_in(115000);
     create_connect();
     enable_servos();
-    set_servo_position(arm,up);
+    set_servo_position(arm,down);
     set_servo_position(claw,open);
+    msleep(450);
+    
+    // Exit Starting box and Grab Blocks
+    forward(700);
+    right(90);
+    forward(400);
+   	set_servo_position(claw, closed);
+    
     msleep(10);
     disable_servos();
-    hit_botguy(arm);
-    right(turn);
-    forward(100);
-    left(turn);
-    pick_up_cube(1);
-    right(turn);
-    go_to_airlock(1);
-    right(turn*2);
-    forward(100);
-    left(turn);
-    forward(1000);
-    right(turn);
-    pick_up_cube(2);
-    right(turn);
-    forward(1000);
-    go_to_airlock(2);
+    
+    
+  	//pick_up_botguy(arm);
     create_disconnect();   
     return 0;
     
@@ -76,47 +70,22 @@ void left(int turn)
     create_stop();
 }
 
-void hit_botguy (int arm)
+/*void pick_up_botguy(int arm)
 {
-    forward(380);
+	forward(380);
     right(turn);
     forward(850);
     left(turn);
     enable_servos();
     set_servo_position(arm,botguy);
     msleep(50);
-    disable_servos();
-    left(turn);
-    right(turn);
- }
-
-void go_to_airlock (int time)
-{
-    forward(100);
-    set_servo_position (claw,open);
-    enable_servos();
+    set_servo_position(claw,closed);
+    msleep(100);
+    set_servo_position(arm,up);
     msleep(10);
     disable_servos();
-    time = time+1;
-}
+ }*/
 
-void pick_up_cube (int time)
-{
-   set_servo_position(arm,down);
-   set_servo_position(claw,open);
-   enable_servos();
-   set_servo_position(claw,open);
-   msleep(20);
-   set_servo_position(claw,closed);
-   right(turn);
-   forward(100);
-   set_servo_position(arm,down);
-   set_servo_position(claw,open);
-   enable_servos();
-   left(turn);
-   set_servo_position(claw,open);
-   msleep(20);
-   set_servo_position(claw,closed);
-   right(turn);
-}
+    
+    
     
