@@ -20,7 +20,12 @@ int main()
     set_servo_position(arm,down);
     set_servo_position(claw,open);
     msleep(450);
-    
+    backward(900);
+    turn(right);
+    backward(50);
+    turn(right);
+    backward(400);
+    forward(100);
     // Exit Starting box and Grab Blocks
     forward(700);
     right(90);
@@ -85,6 +90,19 @@ void left(int turn)
     msleep(10);
     disable_servos();
  }*/
+
+void backward(int dist)
+{
+    set_create_distance(0);
+    while(abs(get_create_distance())<distance)
+    {
+        create_drive_direct(-leftspeed,-rightspeed);
+        msleep(10);
+    }
+    create_stop();
+}
+
+    
 
     
     
