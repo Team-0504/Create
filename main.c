@@ -94,7 +94,7 @@ void left(int turn)
 void backward(int dist)
 {
     set_create_distance(0);
-    while(abs(get_create_distance())<distance)
+    while(abs(get_create_distance())<dist)
     {
         create_drive_direct(-leftspeed,-rightspeed);
         msleep(10);
