@@ -10,6 +10,9 @@ int arm=0;
 int claw=1;
 int lightsensor=3;
 int botguy=200;
+int lockarm=2;
+int vert=1000;
+int air=800;
 
 int main()
 {
@@ -37,6 +40,7 @@ int main()
     
     
   	//pick_up_botguy(arm);
+	//airlock(turn);
     create_disconnect();   
     return 0;
     
@@ -101,6 +105,16 @@ void backward(int dist)
     }
     create_stop();
 }
+
+void airlock(int turn)
+{
+	enable_servos();
+	set_servo_position (lockarm, air);
+	msleep(20);
+	disable_servos();
+	left(turn);
+}
+	
 
     
 
